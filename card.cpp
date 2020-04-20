@@ -1,6 +1,5 @@
 #include "card.hpp"
 
-
 Card::Card() {
 	value = 0;
 }
@@ -18,7 +17,6 @@ const std::string Card::getSuitValue() const {
 		return std::to_string(value);
 	}
 }
-
 
 std::ostream& operator<<(std::ostream& os, const Card& c)
 {
