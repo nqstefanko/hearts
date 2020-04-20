@@ -1,4 +1,4 @@
-hearts: hearts.cpp
-	clang++ -std=c++17 hearts.cpp -o hearts
+hearts: hearts.cpp card.cpp
+	clang++ -std=c++17 hearts.cpp card.cpp  -o hearts
 clean:
 	rm hearts

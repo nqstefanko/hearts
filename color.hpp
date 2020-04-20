@@ -1,3 +1,6 @@
+#ifndef COLOR_H // include guard
+#define COLOR_H
+
 #include <ostream>
 namespace Color {
     enum Code {
@@ -20,3 +23,5 @@ namespace Color {
         }
     };
 }
+
+#endif
