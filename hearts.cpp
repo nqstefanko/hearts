@@ -2,6 +2,10 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <random>
+
+
+#include "color.hpp"
 
 #define SPADES "\u2660"
 #define CLUBS "\u2663"
@@ -41,23 +45,47 @@ public:
 
 std::ostream& operator<<(std::ostream& os, const Card& c)
 {
-    os << c.getSuitValue()  << " " << c.getSuitSymbol();
+	Color::Modifier red(Color::FG_RED);
+    Color::Modifier def(Color::FG_DEFAULT);
+
+    if(c.suit == "Hearts" || c.suit == "Diamonds") {
+    	os << c.getSuitValue()  <<  red << c.getSuitSymbol() << def;
+    } else {
+	    os << c.getSuitValue() << c.getSuitSymbol();
+    }
+
     return os;
 }
 
-std::vector<Card> DECK;
+std::vector<Card> DECK(52);
+void makeDeck(std::vector<Card> & d) {
+	int cardCount = 0;
+	for (auto & m: SUIT_CONVERSION) {
+		for(int i = 2; i < 15; ++i) {
+			d[cardCount] = Card(i, m.first);
+			cardCount++;
+		}
+	}
+}
+
+void shuffleDeck(std::vector<Card> & d) 
+{ 
+    // Initialize seed randomly 
+    srand(time(0)); 
+  
+    for (int i=0; i<d.size() ;i++) 
+    { 
+        int r = i + (rand() % (52 - i));   
+        std::swap(d[i], d[r]); 
+    } 
+} 
+
+
 
 int main() {
-	Card c1(2, "Hearts");
-	Card c2(10, "Clubs");
-	Card c3(14, "Diamonds");
-	Card c4(12, "Spades");
-
-	std::cout << c1 << std::endl;
-	std::cout << c2 << std::endl;
-	std::cout << c3 << std::endl;
-	std::cout << c4 << std::endl;
-
+	makeDeck(DECK);
+	shuffleDeck(DECK);
+	
 	return 0;
 }
 
