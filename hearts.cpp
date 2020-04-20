@@ -1,20 +1,20 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <map>
-#include <random>
-
-#include "card.hpp"
-#include "deck.hpp"
+#include "game.hpp"
+#include "random_ai.hpp"
 
 int main() {
-	
-	Deck d;
-	d.shuffleDeck();
-	d.printDeckSingleLine();
-	
+    Random_AI p1("Player 1");
+
+    // Game g;
+    // g.deck.printDeckSingleLine();
 	return 0;
 }
+
+
+
+//Hearts:
+//Deal in rotation and play cards
+//Count Turn
+
 
 
 

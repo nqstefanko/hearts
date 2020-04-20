@@ -8,29 +8,36 @@
 
 #include "color.hpp"
 
-#define SPADES "\u2660"
-#define CLUBS "\u2663"
-#define DIAMONDS "\u2666"
-#define HEARTS "\u2665"
+enum {SPADES, CLUBS, DIAMONDS, HEARTS};
+
+#define PRINT_ERROR(x) std::cout <<	Color::Modifier(Color::FG_RED) << #x << Color::Modifier(Color::FG_DEFAULT) << std::endl
+
+#define U_SPADES "\u2660"
+#define U_CLUBS "\u2663"
+#define U_DIAMONDS "\u2666"
+#define U_HEARTS "\u2665"
 
 inline std::map<int, std::string> FACE_CARD_CONVERSION = {
 	{11, "Jack"}, {12, "Queen"}, {13, "King"}, {14, "Ace"}};
 
-inline std::map<std::string, const char *> SUIT_CONVERSION = {
-	{"Spades", SPADES}, {"Clubs", CLUBS}, {"Diamonds", DIAMONDS}, {"Hearts", HEARTS}};
+inline std::map<int, const char *> SUIT_CONVERSION = {
+	{SPADES, U_SPADES}, {CLUBS, U_CLUBS}, {DIAMONDS, U_DIAMONDS}, {HEARTS, U_HEARTS}};
 
 class Card {
 public:
-	std::string suit;
+	int suit;
 	int value;
 
 	Card();
 	
-	Card(int v, std::string s);
+	Card(int v, int s);
 
 	const char * getSuitSymbol() const;
 
-	const std::string getSuitValue() const;
+	const std::string getCardValue() const;
+
+	bool hasPoints();
+
 };
 
 std::ostream& operator<<(std::ostream& os, const Card& c);
