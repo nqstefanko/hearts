@@ -25,6 +25,18 @@ bool Card::hasPoints() {
     return false;
 }
 
+
+bool Card::operator > (const Card& c) const
+{
+    return (suit > c.suit);
+}
+
+bool Card::operator < (const Card& c) const
+{
+    return (suit < c.suit);
+}
+
+
 std::ostream& operator<<(std::ostream& os, const Card& c)
 {
 	Color::Modifier red(Color::FG_RED);

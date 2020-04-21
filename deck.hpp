@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <cstdlib>
 
 #include "card.hpp"
 
@@ -12,7 +13,9 @@ class Deck {
 public:
 	std::vector<Card> allCards;
 
-	Deck();
+	Card& operator[](int index);
+
+    Deck();
 
 	void shuffleDeck();
 

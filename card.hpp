@@ -28,6 +28,7 @@ public:
 	int suit;
 	int value;
 
+
 	Card();
 	
 	Card(int v, int s);
@@ -37,6 +38,10 @@ public:
 	const std::string getCardValue() const;
 
 	bool hasPoints();
+
+    bool operator > (const Card& c) const;
+
+    bool operator < (const Card& c) const;
 
 };
 
