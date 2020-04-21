@@ -1,3 +1,0 @@
-/home/nick/code/yearFourCode/yearProjs/HeartsAI/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/nick/code/yearFourCode/yearProjs/HeartsAI/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/nick/code/yearFourCode/yearProjs/HeartsAI/cmake-build-debug/CMakeFiles/hearts_proj.dir
