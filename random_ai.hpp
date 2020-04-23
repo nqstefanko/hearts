@@ -15,6 +15,8 @@ public:
     Random_AI(std::string n);
 
     void performAction(Game & g);
+
+    Card playCard(std::vector<std::pair<Card, int>> & goodCards);
 };
 
 

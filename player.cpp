@@ -48,6 +48,25 @@ void Player::recieveHand(Card c) {
     }
 }
 
+Card Player::playTwoOfClubs() {
+    printHand();
+    Card toPlay;
+    for(int i = 0; i < 13; ++i) {
+        if(hand[i].suit == CLUBS && hand[i].value == 2) {
+            toPlay = hand[i];
+            hand.erase (hand.begin()+i);
+            break;
+        }
+    }
+
+    return toPlay;
+}
+
+Card Player::playCard(std::vector<std::pair<Card, int>> & goodCards) {
+    std::cout << "PLAYER PLAYING CARD" << std::endl;
+}
+
+Player::~Player() {}
 
 //Poly
 //Encap

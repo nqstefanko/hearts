@@ -26,8 +26,11 @@ public:
 
     bool checkSuit();
 
-    void playCard();
+    Card playTwoOfClubs();
 
+    virtual Card playCard(std::vector<std::pair<Card, int>> & goodCards);
+
+    ~Player();
 };
 
 #endif
