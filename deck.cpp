@@ -10,7 +10,6 @@ Deck::Deck(): allCards(52) {
 	}
 }
 
-
 Card& Deck::operator[](int index) {
     if (index >= allCards.size() || index < 0) {
         PRINT_ERROR(ERROR: Index out of bounds for Deck!);

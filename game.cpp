@@ -31,14 +31,16 @@ void Game::deal() {
 }
 
 void Game::playRound() {
-    for(; turn < 13; ++turn) {
-        std::cout << "TURN " << turn << std::endl;
+    for(; cycle < 13; ++cycle) {
+        std::cout << "CYCLE " << cycle << std::endl;
+        currentCycleCards.clear();
         for(int j = 0; j <4; ++j) {
             int toPlay = (firstPlayer + j) % 4;
-            if(turn == 0 && j == 0) {
+            if(cycle == 0 && j == 0) {
                 Card playedCard = order[toPlay]->playTwoOfClubs();
                 std::cout << order[toPlay]->name << " Played " << playedCard << std::endl;
                 suitLed = CLUBS;
+                currentCycleCards.push_back(playedCard);
             } else {
                 std::vector<std::pair<Card, int>> goodCards = getPlayableCards(order[toPlay]->hand);
                 Card playedCard = order[toPlay]->playCard(goodCards);
@@ -46,10 +48,39 @@ void Game::playRound() {
                 if(j == 0) {
                     suitLed = playedCard.suit;
                 }
+                currentCycleCards.push_back(playedCard);
             }
         }
+        addScores();
         suitLed = -1;
+        printScores();
     }
+}
+
+void Game::addScores() {
+    int maxCardIndex = -1;
+    int totalScore = 0;
+    int maxValue = 0;
+    for(int i = 0; i < 4; ++i) {
+        if(currentCycleCards[i].suit == suitLed && currentCycleCards[i].value > maxValue) {
+            maxValue=currentCycleCards[i].value;
+            maxCardIndex = i;
+        }
+        if(currentCycleCards[i].suit == HEARTS) {
+            totalScore+=1;
+        }
+        if(currentCycleCards[i].suit == SPADES && currentCycleCards[i].value == 12) {
+            totalScore+=13;
+        }
+    }
+    order[(firstPlayer + maxCardIndex) % 4]->score+=totalScore;
+}
+
+void Game::printScores() {
+    for(int i = 0; i < 4; ++i) {
+        std::cout <<"P" << i + 1 << ": " << order[i]->score << "  ";
+    }
+    std::cout << std::endl;
 }
 
 bool Game::emptyOfSuit(int suitLed, std::vector<Card> & Hand) {
@@ -59,6 +90,7 @@ bool Game::emptyOfSuit(int suitLed, std::vector<Card> & Hand) {
                 return false;
             }
         }
+        heartsBroken = true;
         return true;
 
     } else {

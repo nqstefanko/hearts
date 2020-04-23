@@ -14,9 +14,10 @@
 class Game {
 public:
     int firstPlayer = 0;
-    int turn = 0;
+    int cycle = 0;
     bool heartsBroken = false;
     Deck deck;
+    std::vector<Card> currentCycleCards;
     int suitLed = -1;
 
     std::vector<Player *> order;
@@ -24,6 +25,10 @@ public:
     Game(Player * p1, Player * p2, Player * p3, Player * p4);
 
     std::vector<std::pair<Card, int>> getPlayableCards(std::vector<Card> & Hand);
+
+    void addScores();
+
+    void printScores();
 
     bool emptyOfSuit(int suitLed, std::vector<Card> & Hand);
 
