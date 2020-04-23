@@ -62,7 +62,7 @@ Card Player::playTwoOfClubs() {
     return toPlay;
 }
 
-Card Player::playCard(std::vector<std::pair<Card, int>> & goodCards) {
+Card Player::playCard(std::vector<std::pair<Card, int>> & goodCards, int suitLed) {
     std::cout << "PLAYER PLAYING CARD" << std::endl;
 }
 

@@ -1,17 +1,18 @@
 #include "game.hpp"
 #include "random_ai.hpp"
+#include "low_ai.hpp"
 
 int main() {
 
-    Random_AI p1("Player 1");
-    Random_AI p2("Player 2");
-    Random_AI p3("Player 3");
-    Random_AI p4("Player 4");
+    Low_AI p1("Player 1");
+    Low_AI p2("Player 2");
+    Low_AI p3("Player 3");
+    Low_AI p4("Player 4");
 
-    Random_AI * pp1 = &p1;
-    Random_AI * pp2 = &p2;
-    Random_AI * pp3 = &p3;
-    Random_AI * pp4 = &p4;
+    Low_AI * pp1 = &p1;
+    Low_AI * pp2 = &p2;
+    Low_AI * pp3 = &p3;
+    Low_AI * pp4 = &p4;
 
     Game g(pp1, pp2, pp3, pp4);
 

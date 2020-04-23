@@ -31,6 +31,7 @@ void Game::deal() {
 }
 
 void Game::playRound() {
+//    order[0]->printThis(this);
     for(; cycle < 13; ++cycle) {
         std::cout << "CYCLE " << cycle << std::endl;
         currentCycleCards.clear();

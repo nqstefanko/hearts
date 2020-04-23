@@ -7,6 +7,7 @@
 #include <algorithm>
 
 #include "card.hpp"
+//#include "game.hpp"
 
 class Player {
 public:
@@ -28,7 +29,9 @@ public:
 
     Card playTwoOfClubs();
 
-    virtual Card playCard(std::vector<std::pair<Card, int>> & goodCards);
+    virtual Card playCard(std::vector<std::pair<Card, int>> & goodCards, int suitLed=-1);
+
+//    virtual void printIt(Game & g);
 
     ~Player();
 };

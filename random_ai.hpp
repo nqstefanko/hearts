@@ -16,7 +16,9 @@ public:
 
     void performAction(Game & g);
 
-    Card playCard(std::vector<std::pair<Card, int>> & goodCards);
+    Card playCard(std::vector<std::pair<Card, int>> & goodCards, int suitLed=-1);
+
+     void printIt(Game & g);
 };
 
 
