@@ -7,6 +7,7 @@
 
 class MTCS_AI: public Player {
 
+
 };
 
 #endif //HEARTS_PROJ_MCTS_PLAYER_H
