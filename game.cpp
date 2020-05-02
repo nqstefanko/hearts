@@ -15,18 +15,16 @@ Game::Game(Player * p1, Player * p2, Player * p3, Player * p4): deck() {
 }
 
 void Game::deal() {
-    for(int i = 0; i < order.size(); ++i) {
-        for(int j = 0; j < 13; ++j) {
+    for(int i = 0; i < order.size(); ++i) { //For each Player
+        for(int j = 0; j < 13; ++j) { //Deal 13 Cards
             Card toDeal = deck[(13 * i)  + j];
             if(toDeal.suit == CLUBS && toDeal.value == 2) {
-                firstPlayer = i;
+                firstPlayer = i; //Get first player
             }
             order[i]->recieveHand(toDeal);
         }
         order[i]->sortHand();
-
     }
-
     std::cout << "Done Dealing" << std::endl;
 }
 

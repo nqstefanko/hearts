@@ -2,15 +2,16 @@
 #include "random_ai.hpp"
 #include "low_ai.hpp"
 #include "human_player.hpp"
+#include "util.hpp"
 
 int main() {
 
-    HumanAI p1("Player 1");
+    Low_AI p1("Player 1");
     Low_AI p2("Player 2");
     Low_AI p3("Player 3");
     Low_AI p4("Player 4");
 
-    HumanAI * pp1 = &p1;
+    Low_AI * pp1 = &p1;
     Low_AI * pp2 = &p2;
     Low_AI * pp3 = &p3;
     Low_AI * pp4 = &p4;
@@ -19,7 +20,14 @@ int main() {
 
     g.playRound();
 
-    std::cout << "Done with Program!" << std::endl;
+    printInColor(Color::FG_CYAN, "Done with Program");
+    printInColor(Color::FG_CYAN, "Done with Program", true);
+
+    printInColor(Color::FG_YELLOW, "Done with Program", true);
+    printInColor(Color::FG_YELLOW, "Done with Program" );
+    for(int i = 0; i < 40; ++i) {
+        std::cout  << "\033[" << i << "m" << "Done with Program" << Color::FG_DEFAULT << std::endl;
+    }
     return 0;
 }
 
